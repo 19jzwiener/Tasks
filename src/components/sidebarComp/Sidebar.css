@@ -1,0 +1,50 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 10vw;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    background-color: black;
+    color: black;
+    align-items: center;
+    
+}
+
+.sidebar__header {
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 5vh;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 10px;
+}
+
+.sidebar__section {
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar__btn {
+
+    padding: 5px;
+
+    background-color: rgb(51, 51, 51);
+
+}
+
+
+
+
+
+.sidebar__lineBreak {
+    width: 100%;
+    background-color: rgb(80, 8, 8);
+    height: 0.3vh;
+}

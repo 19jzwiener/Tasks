@@ -1,0 +1,9 @@
+.app {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: linear-gradient(90deg, #181818 30%, #383838 40%, #383838 60%, #181818 70%) ;
+  }

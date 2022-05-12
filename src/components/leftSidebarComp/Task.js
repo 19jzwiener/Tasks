@@ -33,13 +33,6 @@ function Task(props) {
       ])
   }
 
-  const [items, setItems] = useState(tasks);
-  const removeItem = (index) => {
-    setItems([
-      ...items.slice(0,index), 
-      ...items.slice(index + 1)
-    ])
-  }
 
 
 

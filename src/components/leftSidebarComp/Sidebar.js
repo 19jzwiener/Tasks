@@ -9,7 +9,6 @@ function Sidebar(props) {
   // allow task popout to open and close
   const [taskOpen, setTaskOpen] = useState(false);
 
-  // allow workout popout to open and close
   const [workoutOpen, setWorkoutOpen] = useState(false);
 
   const [weatherOpen, setWeatherOpen] = useState(false);
@@ -51,7 +50,7 @@ function Sidebar(props) {
           Workouts
         </button>
 
-          {/* open and close weather */}
+        {/* open and close weather */}
         <button
           className="sidebar__btn"
           onClick={() => {
@@ -86,6 +85,8 @@ function Sidebar(props) {
           <Weather />
         </div>
       ) : null}
+
+
     </div>
   );
 }

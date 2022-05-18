@@ -1,0 +1,92 @@
+:root {
+    --primary: #311b46;
+    --secondary: #7e052d;
+    --dark: #374763;
+    --light: #dbd3d3;
+    --grey: #e6d8d8;
+
+    --font: "fira Sans", sans-serif;
+    --font-quote: 'fira Code', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font);
+}
+
+body {
+    background-color: var(--light);
+}
+
+.quote {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-width: 80vw;
+    bottom: 0;
+    left: 20vw;
+
+    position: fixed;
+}
+
+blockquote {
+    font-family: var(--font-quote);
+    max-width: 720px;
+    font-size: 2rem;
+    background-color: var(--dark);
+    padding: 3rem;
+    border-radius: 1.5rem;
+    color: #FFF;
+}
+
+.quote__anime, .quote__character {
+    display: inline-block;
+    padding: 0.75rem, 1.5rem;
+    color: var(--light);
+    border-radius: 2.5rem;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    max-width: 360px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.quote__anime  {
+    background-color: var(--secondary);
+    font-weight: 400;
+    transform: translate(0%, 50%);
+}
+
+.quote__character {
+    background-color: var(--primary);
+    font-weight: 700;
+    transform: translate(0%, -50%);
+}
+
+.quotes__btn {
+    appearance: none;
+    border: none;
+    outline: none;
+
+    background-color: var(--primary);
+    color: #FFF;
+    padding: 0.75rem, 1.5rem;
+    border-radius: 3rem;
+    margin-top: 64px;
+    margin-bottom: 64px;
+    transition: 0.4s;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--secondary);
+}

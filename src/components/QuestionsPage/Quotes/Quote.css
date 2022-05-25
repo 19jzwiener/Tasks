@@ -26,20 +26,30 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    max-width: 80vw;
-    bottom: 0;
+
+    height: 30vh;
+    width: 60vw;
+
+
+
+    bottom: 0vh;
     left: 20vw;
 
     position: fixed;
+
 }
 
 blockquote {
     font-family: var(--font-quote);
-    max-width: 720px;
-    font-size: 2rem;
+    max-width: 60vw;
+    max-height: 18vh;
+
+    min-height: 15vh;
+    min-width: 40vw;
+
+    font-size: 1rem;
     background-color: var(--dark);
-    padding: 3rem;
+    padding: 2rem;
     border-radius: 1.5rem;
     color: #FFF;
 }
@@ -56,6 +66,8 @@ blockquote {
     text-overflow: ellipsis;
     white-space: nowrap;
 
+    background-color: black;
+
 }
 
 .quote__anime  {
@@ -66,7 +78,7 @@ blockquote {
 
 .quote__character {
     background-color: var(--primary);
-    font-weight: 700;
+    font-weight: 600;
     transform: translate(0%, -50%);
 }
 
@@ -79,12 +91,13 @@ blockquote {
     color: #FFF;
     padding: 0.75rem, 1.5rem;
     border-radius: 3rem;
-    margin-top: 64px;
-    margin-bottom: 64px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     transition: 0.4s;
     font-size: 1.5rem;
     font-weight: 700;
     cursor: pointer;
+
 }
 
 button:hover {

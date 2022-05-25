@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import './Quotes.css'
+import './Quote.css'
 
 function Quote() {
 

@@ -27,6 +27,7 @@ function Task(props) {
       JSON.parse(window.localStorage.getItem("TASK_POPOUT_TASKS"))[i]
     );
 
+      // grabs task I want to delete and slices around it to grab all the other items
       setTasks([
         ...tasks.slice(0, i),
         ...tasks.slice(i + 1)

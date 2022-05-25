@@ -1,0 +1,82 @@
+.personal {
+    min-width: 40vw;
+    min-height: 40vh;
+
+    max-width: 60vw;
+    max-height: 50vh;
+
+    position: fixed;
+    left: 30vw;
+    top: 25vh;
+
+    border-radius: 20px;
+
+    z-index: 5;
+
+}
+
+.personal__header {
+    text-align: center;
+
+    color: white;
+}
+
+.personal__headerInput {
+    appearance: none;
+    border: none;
+    outline: none;
+
+    min-width: 40vw;
+    min-height: 3vh;
+
+    max-width: 5vw;
+    max-height: 45vh;
+    
+
+    background-color: rgb(35, 35, 189);
+    color: #FFF;
+    border-radius: .5rem;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    transition: 0.4s;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+
+    text-align: center;
+}
+
+.personal__body {
+    text-align: center;
+    color: gray;
+}
+
+.personal__bodyInput {
+    appearance: none;
+    border: none;
+    outline: none;
+
+    min-width: 40vw;
+    min-height: 35vh;
+
+    max-width: 60vw;
+    max-height: 45vh;
+    
+
+    background-color: lightblue;
+    color: #FFF;
+    
+    border-radius: .5rem;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    transition: 0.4s;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+
+    text-align: justify;
+    text-align-last: center;
+
+    word-wrap: normal;
+    overflow-wrap: break-word;
+}

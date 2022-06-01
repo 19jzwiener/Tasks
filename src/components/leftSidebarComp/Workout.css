@@ -4,7 +4,7 @@
     width: 70vw;
     min-width: 3000px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     background-color: #191919;
     position: fixed;
     left: 15vw;
@@ -16,7 +16,7 @@
 
 .homeWorkout__header {
     display: flex;
-    width: 70vw;
+    width: 68vw;
     align-items: center;
     justify-content: center;
     left: 0vw;

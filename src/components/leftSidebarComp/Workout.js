@@ -6,10 +6,13 @@ import "./Workout.css";
 function Workout() {
   const [workoutRows, setWorkoutRows] = useState([]);
 
+  // Allow for creation of Workout
   const [descriptionBox, setDescriptionBox] = useState("");
 
+  // Allow for creation of Headers
   const [descriptionHeader, setDescriptionHeader] = useState("");
   
+  // ALlow selection of which row we want to add a workout too
   const [addIndex, setAddIndex] = useState(null)
 
   useEffect(() => {

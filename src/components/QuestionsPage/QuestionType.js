@@ -5,13 +5,11 @@ import Personal from "./Personal";
 import "./QuestionType.css";
 
 function QuestionType() {
-  const [answerOpen, setAnswerOpen] = useState(false);
 
 
 
   const [type, setType] = useState([
-    "Motivational" ,
-     "Personal" 
+    "Motivational" 
   ]);
 
   return (
@@ -27,8 +25,6 @@ function QuestionType() {
                   <p>{questionType} questions</p>
                   <button className="sidebar__btnSmall">ADD</button>
                 </div>
-                <button onClick={() => {
-                  setAnswerOpen(!answerOpen)}} >Open</button>
                 
               </div>
               <div className="sidebar__lineBreak" />
@@ -37,11 +33,7 @@ function QuestionType() {
         })}
       </div>
 
-      {answerOpen ? (
-        <div>
-          <Personal info={type} />
-        </div>
-      ) : null}
+      
     </div>
   );
 }

@@ -6,9 +6,12 @@ import Quote from './Quotes/Quote'
 import "./Questions.css"
 
 function Questions() {
+
+  
+
   return (
     <div className='questions' >
-        <Sidebar />
+        <Sidebar  />
         <Quote />
     </div>
   )

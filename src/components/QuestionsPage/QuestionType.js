@@ -7,40 +7,39 @@ import "./QuestionType.css";
 function QuestionType() {
   const [answerOpen, setAnswerOpen] = useState(false);
 
+
+
+  const [type, setType] = useState([
+    "Motivational" ,
+     "Personal" 
+  ]);
+
   return (
     <div className="type">
-      <div className="sidebar__box">
-        <div className="sidebar__header">
-          <input
-            className="sidebar__headerInput"
-            type="text"
-            placeholder="Enter Type of Questions"
-          />
-          <button className="sidebar__btnSmall">ADD</button>
-        </div>
-        <div>
-          <input
-            className="sidebar__btn"
-            type="text"
-            placeholder="Enter Question"
-          />
-          <button
-          className="sidebar__btnSmall"
-            onClick={() => {
-              setAnswerOpen(!answerOpen);
-            }}
-          >
-            Personal
-          </button>
-        </div>
+     
 
-        <button className="sidebar__btn">Question2</button>
+      <div>
+        {type.map((questionType, index) => {
+          return (
+            <article >
+              <div className="sidebar__box">
+                <div className="sidebar__header">
+                  <p>{questionType} questions</p>
+                  <button className="sidebar__btnSmall">ADD</button>
+                </div>
+                <button onClick={() => {
+                  setAnswerOpen(!answerOpen)}} >Open</button>
+                
+              </div>
+              <div className="sidebar__lineBreak" />
+            </article>
+          );
+        })}
       </div>
-      <div className="sidebar__lineBreak" />
 
       {answerOpen ? (
         <div>
-          <Personal />
+          <Personal info={type} />
         </div>
       ) : null}
     </div>

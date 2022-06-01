@@ -9,6 +9,8 @@ function Workout() {
   const [descriptionBox, setDescriptionBox] = useState("");
 
   const [descriptionHeader, setDescriptionHeader] = useState("");
+  
+  const [addIndex, setAddIndex] = useState(null)
 
   useEffect(() => {
     const data = window.localStorage.getItem("WORKOUT_ROW_INFO");
@@ -47,8 +49,8 @@ function Workout() {
                   </td>
                 </div>
 
-              {/* Creating new array under row.workouts */}
-              {/* Iterating over row.workouts array */}
+                {/* Creating new array under row.workouts */}
+                {/* Iterating over row.workouts array */}
                 {row.workouts.map((workout, index) => {
                   return <td className="homeWorkout__cell">{workout}</td>;
                 })}
@@ -60,30 +62,40 @@ function Workout() {
                     >
                       Delete Row
                     </button>
-                    <input
-                      type="text"
-                      name="description"
-                      value={descriptionBox}
-                      onChange={(e) => setDescriptionBox(e.target.value)}
-                    />
-                    <button
-                      className="homeWorkout__btn"
-                      onClick={() => {
-                        // make sure todo isn't empty
-                        if (descriptionBox.length) {
-                          // 
-                          let newRow = workoutRows.slice(-1)[0];
-                          //push WorkoutRows information to descriptionBox
-                          newRow.workouts.push(descriptionBox);
-                          // Place new workout at end of array ---- take workoutRows Array first index
-                          setWorkoutRows([...workoutRows.slice(0, -1), workoutRows.slice(-1)[0]]);
-                          // reset description to blank
-                          setDescriptionBox("");
-                        }
-                      }}
-                    >
-                      Enter Workout
-                    </button>
+                    {index == addIndex ? (
+                      <>
+                        <input
+                          type="text"
+                          name="description"
+                          value={descriptionBox}
+                          onChange={(e) => setDescriptionBox(e.target.value)}
+                        />
+                        <button
+                          className="homeWorkout__btn"
+                          onClick={() => {
+                            // make sure todo isn't empty
+                            if (descriptionBox.length) {
+                              //
+                              let rowToAddWorkoutTo = workoutRows.slice(index)[0];
+                              //push WorkoutRows information to descriptionBox
+                              rowToAddWorkoutTo.workouts.push(descriptionBox);
+                              // Place new workout at end of array ---- take workoutRows Array first index
+                              setWorkoutRows([
+                                ...workoutRows.slice(0, index),
+                                rowToAddWorkoutTo,
+                                ...workoutRows.slice(index+1)
+                              ]);
+                              // reset description to blank
+                              setDescriptionBox("");
+                            }
+                          }}
+                        >
+                          Enter Workout
+                        </button>
+                      </>
+                    ) : (
+                      <button onClick={() => setAddIndex(index)}>Add Workout</button>
+                    )}
                   </td>
                 </div>
               </tr>

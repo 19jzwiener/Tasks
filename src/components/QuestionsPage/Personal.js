@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import "./Personal.css";
 
-function Personal() {
+function Personal({type}) {
 
   const [body, setBody] = useState("")
 
@@ -25,11 +25,11 @@ function Personal() {
   return (
     <div className="personal">
       <header className="personal__header">
-        <input
-          className="personal__headerInput"
-          type="text"
-          placeholder="Enter your question..."
-        />
+        {type.map((person) => {
+          
+          return <p>{person}</p>
+        })}
+        <p>hello</p>
       </header>
       <div className="personal__body">
         <textarea

@@ -26,24 +26,33 @@ function QuestionType() {
     window.localStorage.setItem("TYPE_INFO", JSON.stringify(type));
   }, [type]);
 
+  function deleteTypeHeader(i) {
+    console.log(JSON.parse(window.localStorage.getItem("TYPE_INFO"))[i]);
+
+    setType([...type.slice(0, i), ...type.slice(i + 1)]);
+  }
+
   return (
     <div className="type">
       <div>
         {type.map((questionType, index) => {
           return (
             <article>
-              <div className="sidebar__box">
-                <div className="sidebar__header">
-                  <p>{questionType.typeHeader} questions</p>
+              <div className="question__box">
+                <div className="question__header">
+                  <p className="question__type" >{questionType.typeHeader} questions</p>
                 </div>
                 {questionType.questions.map((question, index) => {
                   return (
                     // Take questions stuff from other page
-                    <div>{question}</div>
+                    <div className="question__box" >
+                      <button className="question__btn" >{question}</button>
+                      <button className="question__btnSmall">Open</button>
+                    </div>
                   );
                 })}
                 <div>
-                  <button>delete question type</button>
+                  <button onClick={() => deleteTypeHeader(index)} >delete question type</button>
                   {index == addIndex ? (
                     <>
                       {/* Add questions to specific questionType */}
@@ -83,7 +92,7 @@ function QuestionType() {
                   )}
                 </div>
               </div>
-              <div className="sidebar__lineBreak" />
+              <div className="question__lineBreak" />
             </article>
           );
         })}

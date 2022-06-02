@@ -2,7 +2,7 @@
     width: 100%;
 }
 
-.sidebar__box {
+.question__box {
     width: 100%;
     text-align: center;
     display: flex;
@@ -12,14 +12,17 @@
     margin-bottom: 3px;
 }
 
-.sidebar__btn {
+.question__btn {
     appearance: none;
     border: none;
     outline: none;
 
+    
+    height: 3vh;
+
     background-color: lightblue;
     color: #FFF;
-    border-radius: 2rem;
+    border-radius: 3rem;
     margin-top: 3px;
     margin-bottom: 3px;
     transition: 0.4s;
@@ -28,16 +31,16 @@
     cursor: pointer;
 }
 
-.sidebar__btn:hover {
-    background-color: rgb(172, 172, 230);
+.question__btn:hover {
+    background-color: gray;
 }
 
-.sidebar__header {
+.question__header {
     display: flex;
     flex-direction: row;
 }
 
-.sidebar__headerInput {
+.question__headerInput {
     appearance: none;
     border: none;
     outline: none;
@@ -55,7 +58,11 @@
     text-align: center;
 }
 
-.sidebar__btnSmall {
+.question__type {
+    width: 100%;
+}
+
+.question__btnSmall {
     appearance: none;
     border: none;
     outline: none;
@@ -67,13 +74,13 @@
 
 }
 
-.sidebar__btnSmall:hover {
-    background-color: lightblue;
+.question__btnSmall:hover {
+    background-color: gray;
 }
 
 
 
-.sidebar__lineBreak {
+.question__lineBreak {
     width: 100%;
     background-color: rgb(0, 0, 0);
     height: 0.4vh;

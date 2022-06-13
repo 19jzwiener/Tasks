@@ -14,8 +14,12 @@ function QuestionType() {
   // UseState to create questions under each type
   const [typeQuestions, setTypeQuestions] = useState("");
 
-  // UseState for index --> will be added later
+  const [answer, setAnswer] = useState("");
+
+  // UseState for index
   const [addIndex, setAddIndex] = useState(null);
+
+  const [addIndex2, setAddIndex2] = useState(null);
 
   useEffect(() => {
     const data = window.localStorage.getItem("TYPE_INFO");
@@ -40,57 +44,115 @@ function QuestionType() {
             <article>
               <div className="question__box">
                 <div className="question__header">
-                  <p className="question__type" >{questionType.typeHeader} questions</p>
+                  <p className="question__type">
+                    {questionType.typeHeader} questions
+                  </p>
                 </div>
-                {questionType.questions.map((question, index) => {
-                  return (
-                    // Take questions stuff from other page
-                    <div className="question__box" >
-                      <button className="question__btn" >{question}</button>
-                      <button className="question__btnSmall">Open</button>
-                    </div>
-                  );
-                })}
-                <div>
-                  <button onClick={() => deleteTypeHeader(index)} >delete question type</button>
-                  {index == addIndex ? (
-                    <>
-                      {/* Add questions to specific questionType */}
-                      <input
-                        type="text"
-                        name="TypeQuestion"
-                        value={typeQuestions}
-                        onChange={(e) => setTypeQuestions(e.target.value)}
-                      />
-                      <button
-                        onClick={() => {
-                          // Make sure question isn't empty
-                          if (typeQuestions.length) {
-                            let sectionToAddQuestionTo = type.slice(index)[0];
-                            // push type info to typeQuestions
-                            sectionToAddQuestionTo.questions.push(
-                              typeQuestions
-                            );
-                            // Place new question at end of array
-                            setType([
-                              ...type.slice(0, index),
-                              sectionToAddQuestionTo,
-                              ...type.slice(index + 1),
-                            ]);
-                            // reset description to blank
-                            setTypeQuestions("");
-                          }
-                        }}
-                      >
-                        Enter Question
+
+                {index == addIndex ? (
+                  <>
+                    {" "}
+                    {questionType.questions.map((question, index2) => {
+                      return (
+                        // Take questions stuff from other page
+                        <div className="question__box">
+                          <button className="question__btn">{question}</button>
+                          <button onClick={() => setAddIndex2(index2)}>
+                            How do you do
+                          </button>
+
+                          {index == addIndex && index2 == addIndex2 && (
+                            <>
+                              <div className="question__personalBox">
+                                <p>{question}</p>
+                                <div className="question__innerBox">
+                                  <p>left</p>
+                                  <textarea
+                                    className="question__personalBoxAnswer"
+                                    type="text"
+                                    placeholder="Enter your answer..."
+                                    value={questionType.answers[index2]}
+                                    onChange={(e) => console.log(e)}
+                                  />
+                                  <input
+                                    type="text"
+                                    value={answer}
+                                    onChange={(e) => setAnswer(e.target.value)}
+                                  />
+
+                                  <button
+                                    onClick={() => {
+                                      let sectionToChangeAnswerTo =
+                                        type.slice(index)[0];
+                                      // push type info to typeQuestions
+                                      sectionToChangeAnswerTo.answers[index2] =
+                                        answer;
+
+                                      // Place new question at end of array
+                                      setType([
+                                        ...type.slice(0, index),
+                                        sectionToChangeAnswerTo,
+                                        ...type.slice(index + 1),
+                                      ]);
+                                      setAnswer("");
+                                    }}
+                                  >
+                                    Change Answer
+                                  </button>
+                                  <p>right</p>
+                                </div>
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      );
+                    })}
+                    <div>
+                      <button onClick={() => deleteTypeHeader(index)}>
+                        delete question type
                       </button>
-                    </>
-                  ) : (
-                    <button onClick={() => setAddIndex(index)}>
-                      Add Question
-                    </button>
-                  )}
-                </div>
+
+                      <>
+                        {/* Add questions to specific questionType */}
+                        <input
+                          type="text"
+                          name="TypeQuestion"
+                          value={typeQuestions}
+                          onChange={(e) => setTypeQuestions(e.target.value)}
+                        />
+                        <button
+                          onClick={() => {
+                            // Make sure question isn't empty
+                            if (typeQuestions.length) {
+                              let sectionToAddQuestionTo = type.slice(index)[0];
+                              // push type info to typeQuestions
+                              sectionToAddQuestionTo.questions.push(
+                                typeQuestions
+                              );
+
+                              sectionToAddQuestionTo.answers.push("");
+
+                              // Place new question at end of array
+                              setType([
+                                ...type.slice(0, index),
+                                sectionToAddQuestionTo,
+                                ...type.slice(index + 1),
+                              ]);
+                              // reset description to blank
+                              setTypeQuestions("");
+                            }
+                          }}
+                        >
+                          Add Question
+                        </button>
+                      </>
+                    </div>
+                  </>
+                ) : (
+                  <button onClick={() => setAddIndex(index)}>
+                    Open Questions
+                  </button>
+                )}
               </div>
               <div className="question__lineBreak" />
             </article>
@@ -117,6 +179,8 @@ function QuestionType() {
                     typeHeader: typeHeader,
                     // create new questions array
                     questions: [],
+                    // Create new answers array
+                    answers: [],
                   },
                 ]);
                 // reset typeHeader to blank

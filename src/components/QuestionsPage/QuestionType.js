@@ -17,7 +17,7 @@ function QuestionType() {
   const [answer, setAnswer] = useState("");
 
   // UseState for index
-  const [addIndex, setAddIndex] = useState(null);
+  const [addIndex, setAddIndex] = useState(0);
 
   const [addIndex2, setAddIndex2] = useState(null);
 
@@ -56,9 +56,9 @@ function QuestionType() {
                       return (
                         // Take questions stuff from other page
                         <div className="question__box">
-                          <button className="question__btn">{question}</button>
-                          <button onClick={() => setAddIndex2(index2)}>
-                            How do you do
+                          <p className="question__question">{question}</p>
+                          <button className="question__btn" onClick={() => setAddIndex2(index2)}>
+                            Open {question} answer sheet
                           </button>
 
                           {index == addIndex && index2 == addIndex2 && (
@@ -66,7 +66,6 @@ function QuestionType() {
                               <div className="question__personalBox">
                                 <p>{question}</p>
                                 <div className="question__innerBox">
-                                  <p>left</p>
                                   <textarea
                                     className="question__personalBoxAnswer"
                                     type="text"
@@ -99,7 +98,6 @@ function QuestionType() {
                                   >
                                     Change Answer
                                   </button>
-                                  <p>right</p>
                                 </div>
                               </div>
                             </>
@@ -108,7 +106,7 @@ function QuestionType() {
                       );
                     })}
                     <div>
-                      <button onClick={() => deleteTypeHeader(index)}>
+                      <button  className="question__Addbtn" onClick={() => deleteTypeHeader(index)}>
                         delete question type
                       </button>
 
@@ -121,6 +119,7 @@ function QuestionType() {
                           onChange={(e) => setTypeQuestions(e.target.value)}
                         />
                         <button
+                          className="question__Addbtn"
                           onClick={() => {
                             // Make sure question isn't empty
                             if (typeQuestions.length) {
@@ -149,7 +148,7 @@ function QuestionType() {
                     </div>
                   </>
                 ) : (
-                  <button onClick={() => setAddIndex(index)}>
+                  <button className="question__btn" onClick={() => setAddIndex(index)}>
                     Open Questions
                   </button>
                 )}
@@ -167,7 +166,7 @@ function QuestionType() {
             onChange={(e) => setTypeHeader(e.target.value)}
           />
           <button
-            className=""
+            className="question__Addbtn"
             onClick={() => {
               // make sure typeHeader isn't empty
               if (typeHeader.length) {
@@ -175,7 +174,7 @@ function QuestionType() {
                 setType([
                   ...type,
                   {
-                    // Still don't quite understand ask Ben or Preston
+                    // typeHeader = typeHeader from useState
                     typeHeader: typeHeader,
                     // create new questions array
                     questions: [],
@@ -188,7 +187,7 @@ function QuestionType() {
               }
             }}
           >
-            Enter Header Cell
+            Add Header
           </button>
         </div>
       </div>

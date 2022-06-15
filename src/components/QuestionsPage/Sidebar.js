@@ -16,22 +16,6 @@ function Sidebar() {
       </div>
 
       <div className="sidebar__lineBreak" />
-      <div className="sidebar__box">
-        <div className="sidebar__header">
-          <h4 className="sidebar__questions">Personal Questions</h4>
-          <button className="sidebar__btnSmall">ADD</button>
-        </div>
-        <button
-          className="sidebar__btn"
-          
-        >
-          Question1
-        </button>
-        <button className="sidebar__btn">Question2</button>
-        <input className="questions__input" type="text"></input>
-      </div>
-
-      <div className="sidebar__lineBreak" />
 
       <QuestionType />
 

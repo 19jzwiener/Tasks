@@ -2,13 +2,12 @@
     width: 100%;
 }
 
-.hi {
-    width: 50vw;
-    height: 50vh;
-    background-color: red;
-    position: fixed;
-    top: 25vh;
-    right: 25vw;
+.question__type {
+    width: 100%;
+    background-color: #353b48;
+    color: white;
+    height: 2.5vh;
+    font-size: large;
 }
 
 .question__box {
@@ -21,6 +20,24 @@
     margin-bottom: 3px;
 }
 
+.question__question {
+    appearance: none;
+    border: none;
+    outline: none;
+
+    
+    height: 2vh;
+
+    background-color: #355977;
+    color: #FFF;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    transition: 0.4s;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
 .question__btn {
     appearance: none;
     border: none;
@@ -29,7 +46,7 @@
     
     height: 3vh;
 
-    background-color: lightblue;
+    background-color: rgb(42, 128, 156);
     color: #FFF;
     border-radius: 3rem;
     margin-top: 3px;
@@ -42,6 +59,26 @@
 
 .question__btn:hover {
     background-color: gray;
+}
+
+.question__Addbtn {
+    appearance: none;
+    border: none;
+    outline: none;
+
+    
+    height: 3vh;
+
+    background-color: rgb(9, 81, 105);
+    color: #FFF;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    transition: 0.4s;
+    font-size: 1rem;
+    font-weight: 300;
+    cursor: pointer;
+
+    padding: 2px;
 }
 
 .question__header {
@@ -67,13 +104,7 @@
     text-align: center;
 }
 
-.question__type {
-    width: 100%;
-    background-color: black;
-    color: white;
-    height: 2.5vh;
-    font-size: large;
-}
+
 
 .question__btnSmall {
     appearance: none;
@@ -95,19 +126,21 @@
 
 .question__lineBreak {
     width: 100%;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     height: 0.4vh;
 }
 
 .question__personalBox {
     position: fixed;
-    width: 50vw;
-    height: 50vh;
+    min-width: 50vw;
+    min-height: 50vh;
     top: 10vh;
     right: 25vw;
+
+    align-items: center;
     
 
-    background-color: gray;
+    background-color: rgb(9, 81, 105);
     color: white;
 
 }
@@ -117,15 +150,30 @@
 .question__innerBox {
     position: fixed;
 
-    top: 25vh;
-
+    top: 15vh;
 
     display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    padding: 10px;
+    flex-direction: column;
 
     max-width: 50vw;
     max-height: 30vh;
 }
+
+.question__personalBoxAnswer {
+    min-height: 41vh;
+    min-width: 50vw;
+
+    background-color: rgb(9, 81, 105);
+    border-top-color: black;
+    border-top-width: 1vh;
+
+    color: white;
+    font-size: 1.2rem;
+
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    overflow:hidden;
+}
+
+

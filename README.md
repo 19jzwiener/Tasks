@@ -1,4 +1,14 @@
-# Folder: C:\Users\Joe\Documents\Tasks\Tasks
+# Installing App
+- npm installed on machine
+- Clone Repo to local machine
+- 
+- 
+
+# Running App
+
+# Languages and Libraries Used
+
+# Live Demo Link
 
 ## `npm start`
 

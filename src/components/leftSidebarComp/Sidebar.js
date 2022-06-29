@@ -9,13 +9,16 @@ function Sidebar(props) {
   // allow task popout to open and close
   const [taskOpen, setTaskOpen] = useState(false);
 
+  //  allow workout popout to open and close
   const [workoutOpen, setWorkoutOpen] = useState(false);
 
+  //  allow weather popout to open and close
   const [weatherOpen, setWeatherOpen] = useState(false);
 
   return (
     <div className="sidebar">
       {/* top box for the left sidebar */}
+      {/* Holds users name and a question for what someone would like to do */}
       <div className="sidebar__header">
         <div className="greeting">Joseph Zwiener</div>
         <div className="select">What to do?</div>
@@ -26,6 +29,7 @@ function Sidebar(props) {
 
       {/* popout window buttons */}
       <div className="sidebar__section">
+        
         {/* open and close task popout */}
         <button
           className="sidebar__btn"
@@ -80,6 +84,7 @@ function Sidebar(props) {
         </div>
       ) : null}
 
+        {/* if weatherOpen is true do such, if closed null */}
       {weatherOpen ? (
         <div>
           <Weather />

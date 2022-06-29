@@ -6,6 +6,7 @@ import './App.css'
 function App() {
   
   return (
+    // File where pages are placed once finished
     <div className="app">
         <Questions />
 

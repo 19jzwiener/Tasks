@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 
 import QuestionType from "./QuestionType";
-import Personal from "./Personal";
 
 import "./Sidebar.css";
 
 function Sidebar() {
-  const [answerOpen, setAnswerOpen] = useState(false);
 
   return (
     <div className="sidebar">
       <div className="sidebar__box">
         {/* This will change into a hyperlink to switch pages */}
+        {/* top header section for page */}
         <div>Home</div>
       </div>
 
       <div className="sidebar__lineBreak" />
 
+      {/* allows for creation of new questions and header to be placed on sidebar */}
       <QuestionType />
 
     </div>

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import Personal from "./Personal";
-
 import "./QuestionType.css";
 
 function QuestionType() {
@@ -14,22 +12,27 @@ function QuestionType() {
   // UseState to create questions under each type
   const [typeQuestions, setTypeQuestions] = useState("");
 
+  // UseState for new answers
   const [answer, setAnswer] = useState("");
 
   // UseState for index --> 0 places first question set to be open right away
   const [addIndex, setAddIndex] = useState(0);
 
+  // UseState for index2 --> null leaves it closed until someone opens up a question inside QuestionType
   const [addIndex2, setAddIndex2] = useState(null);
 
+  // Saves all questions and questionTypes into localStorage
   useEffect(() => {
     const data = window.localStorage.getItem("TYPE_INFO");
     if (data !== null) setType(JSON.parse(data));
   }, []);
 
+  // Allows for adding or deleting questionTypes and then resaves into localStorage
   useEffect(() => {
     window.localStorage.setItem("TYPE_INFO", JSON.stringify(type));
   }, [type]);
 
+  // delete questionType
   function deleteTypeHeader(i) {
     console.log(JSON.parse(window.localStorage.getItem("TYPE_INFO"))[i]);
 
@@ -73,6 +76,7 @@ function QuestionType() {
                               <div className="question__personalBox">
                                 <p>{question}</p>
                                 <div className="question__innerBox">
+                                  {/* area where answer will sit when inputted */}
                                   <textarea
                                     className="question__personalBoxAnswer"
                                     type="text"
@@ -80,12 +84,14 @@ function QuestionType() {
                                     value={questionType.answers[index2]}
                                     onChange={(e) => console.log(e)}
                                   />
+                                  {/* area to input answers */}
                                   <input
                                     type="text"
                                     value={answer}
                                     onChange={(e) => setAnswer(e.target.value)}
                                   />
 
+                                    {/* button to input answer */}
                                   <button
                                     onClick={() => {
                                       let sectionToChangeAnswerTo =
@@ -168,6 +174,7 @@ function QuestionType() {
         })}
 
         <div>
+          {/* Create new typeHeader */}
           <input
             type="text"
             name="typeHeader"

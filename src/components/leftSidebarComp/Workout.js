@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import "./Workout.css";
 
 function Workout() {
+
+  // create Rows for workouts to be added to
   const [workoutRows, setWorkoutRows] = useState([]);
 
   // Allow for creation of Workout
@@ -15,11 +17,13 @@ function Workout() {
   // ALlow selection of which row we want to add a workout too
   const [addIndex, setAddIndex] = useState(null)
 
+  // save workoutRows input into localStorage
   useEffect(() => {
     const data = window.localStorage.getItem("WORKOUT_ROW_INFO");
     if (data !== null) setWorkoutRows(JSON.parse(data));
   }, []);
 
+  // allow for workoutRows to be added to or deleted from
   useEffect(() => {
     window.localStorage.setItem(
       "WORKOUT_ROW_INFO",
@@ -27,6 +31,7 @@ function Workout() {
     );
   }, [workoutRows]);
 
+  // delete workoutRow 
   function deleteWorkoutRow(i) {
     console.log(JSON.parse(window.localStorage.getItem("WORKOUT_ROW_INFO"))[i]);
 
@@ -37,6 +42,7 @@ function Workout() {
     <div className="homeWorkout">
       {/* table for workout */}
       <table>
+        {/* header for type of workouts and then workouts */}
         <tr className="homeWorkout__header">
           <th className="homeWorkout__headerLeft">Type</th>
           <th className="homeWorkout__headerRight">Workouts</th>
@@ -59,6 +65,7 @@ function Workout() {
                 })}
                 <div>
                   <td className="homeWorkout__subDel">
+                    {/* delete whole workoutRow index */}
                     <button
                       className="homeWorkout__btn"
                       onClick={() => deleteWorkoutRow(index)}
@@ -75,6 +82,8 @@ function Workout() {
                           value={descriptionBox}
                           onChange={(e) => setDescriptionBox(e.target.value)}
                         />
+
+                        {/* add workout based off of input  */}
                         <button
                           className="homeWorkout__btn"
                           onClick={() => {
@@ -99,6 +108,7 @@ function Workout() {
                         </button>
                       </>
                     ) : (
+                      // Switch which row to add new workout to
                       <button onClick={() => setAddIndex(index)}>Add Workout</button>
                     )}
                   </td>
@@ -108,12 +118,14 @@ function Workout() {
           })}
 
           <div>
+            {/* Create new workoutRow and workout list underneath */}
             <input
               type="text"
               name="description"
               value={descriptionHeader}
               onChange={(e) => setDescriptionHeader(e.target.value)}
             />
+            {/* Create new workoutRow and workout list underneath */}
             <button
               className=""
               onClick={() => {

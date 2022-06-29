@@ -8,11 +8,13 @@ function Task(props) {
   // sets input to blank
   const [description, setDescription] = useState("");
 
+  // hold tasks inputed in localStorage, so they don't disappear when page is closed and reopenned
   useEffect(() => {
     const data = window.localStorage.getItem("TASK_POPOUT_TASKS");
     if (data !== null) setTasks(JSON.parse(data));
   }, []);
 
+  // resets task storage whenever a new task is created or deleted
   useEffect(
     () => {
       window.localStorage.setItem("TASK_POPOUT_TASKS", JSON.stringify(tasks));
@@ -41,28 +43,36 @@ function Task(props) {
     <div className="task">
       {/* header for Task popout */}
       <p className="task__header">Tasks for the day</p>
+
       {/* linebreak between header and tasks */}
       <div className="task__lineBreak" />
+
       <div className="task__tasksTable">
+        {/* loop through all tasks */}
         {tasks.map((task, index) => {
-          // take task input and add to list
           return (
             <div className="task__tasks">
+              {/* Delete a task */}
               <button className="task__btn" onClick={() => deleteTask(index)}>
                 x
               </button>
+              {/* Show task */}
               <p> {task.description} </p>
             </div>
           );
         })}
       </div>
+
       <div className="task__input">
+        {/* Input new task */}
         <input
           type="text"
           name="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
+
+        {/* Button to submit new task into list */}
         <button
           className="task__btn"
           onClick={() => {
@@ -72,7 +82,7 @@ function Task(props) {
               setTasks([
                 ...tasks,
                 {
-                  // ????? set typed info to description
+                  // Set task description as the description set in input above
                   description: description,
                 },
               ]);

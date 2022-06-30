@@ -7,6 +7,9 @@
 - Open Folder in terminal and the type "npm start"
 
 # Languages and Libraries Used
+- JavaScript
+- HTML
+- CSS
 
 # Live Demo Link
 

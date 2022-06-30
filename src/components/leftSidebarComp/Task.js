@@ -53,7 +53,7 @@ function Task(props) {
           return (
             <div className="task__tasks">
               {/* Delete a task */}
-              <button className="task__btn" onClick={() => deleteTask(index)}>
+              <button className="btn btn-danger" onClick={() => deleteTask(index)}>
                 x
               </button>
               {/* Show task */}
@@ -66,6 +66,7 @@ function Task(props) {
       <div className="task__input">
         {/* Input new task */}
         <input
+        className="form-control input-lg"
           type="text"
           name="description"
           value={description}
@@ -74,7 +75,7 @@ function Task(props) {
 
         {/* Button to submit new task into list */}
         <button
-          className="task__btn"
+          className="btn btn-success"
           onClick={() => {
             // make sure todo isn't empty
             if (description.length) {

@@ -67,7 +67,7 @@ function Workout() {
                   <td className="homeWorkout__subDel">
                     {/* delete whole workoutRow index */}
                     <button
-                      className="homeWorkout__btn"
+                      className="btn btn-danger"
                       onClick={() => deleteWorkoutRow(index)}
                     >
                       Delete Row
@@ -77,6 +77,7 @@ function Workout() {
                       <>
                       {/* Add workouts to specific row */}
                         <input
+                        className="form-control input-lg"
                           type="text"
                           name="description"
                           value={descriptionBox}
@@ -85,7 +86,7 @@ function Workout() {
 
                         {/* add workout based off of input  */}
                         <button
-                          className="homeWorkout__btn"
+                          className="btn btn-success"
                           onClick={() => {
                             // make sure new workout isn't empty
                             if (descriptionBox.length) {
@@ -109,7 +110,7 @@ function Workout() {
                       </>
                     ) : (
                       // Switch which row to add new workout to
-                      <button onClick={() => setAddIndex(index)}>Add Workout</button>
+                      <button className="btn btn-info" onClick={() => setAddIndex(index)}>Add Workout</button>
                     )}
                   </td>
                 </div>
@@ -127,7 +128,7 @@ function Workout() {
             />
             {/* Create new workoutRow and workout list underneath */}
             <button
-              className=""
+              className="btn btn-primary"
               onClick={() => {
                 // make sure descriptionHeader isn't empty
                 if (descriptionHeader.length) {

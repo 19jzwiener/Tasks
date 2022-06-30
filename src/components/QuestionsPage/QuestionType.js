@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import "./QuestionType.css";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 function QuestionType() {
   // List of all types of questions
   const [type, setType] = useState([]);
@@ -42,7 +45,6 @@ function QuestionType() {
   return (
     <div className="type">
       <div>
-
         {/* looping through each of the questionTypes */}
         {type.map((questionType, index) => {
           return (
@@ -51,11 +53,11 @@ function QuestionType() {
                 <div className="question__header">
                   <p className="question__type">
                     {/* Shows each header on the page */}
-                    {questionType.typeHeader} questions
+                    {questionType.typeHeader} 
                   </p>
                 </div>
 
-                  {/* hides questions under each header until addIndex is equal to set index */}
+                {/* hides questions under each header until addIndex is equal to set index */}
                 {index == addIndex ? (
                   <>
                     {/* Loop through questions under a header */}
@@ -65,14 +67,17 @@ function QuestionType() {
                         <div className="question__box">
                           {/* Print out each question under the header */}
                           <p className="question__question">{question}</p>
-                          <button className="question__btn" onClick={() => setAddIndex2(index2)}>
-                            Open {question} answer sheet
+                          <button
+                            className="btn btn-primary"
+                            onClick={() => setAddIndex2(index2)}
+                          >
+                            Open answer sheet  
                           </button>
 
-                            {/* Pops out the answer page only if both index's equal the header and question index's */}
+                          {/* Pops out the answer page only if both index's equal the header and question index's */}
                           {index == addIndex && index2 == addIndex2 && (
                             <>
-                            {/* popout box --> question/textarea/boxAnswer/changeAnswer */}
+                              {/* popout box --> question/textarea/boxAnswer/changeAnswer */}
                               <div className="question__personalBox">
                                 <p>{question}</p>
                                 <div className="question__innerBox">
@@ -86,13 +91,16 @@ function QuestionType() {
                                   />
                                   {/* area to input answers */}
                                   <input
+                                  className="input-group"
                                     type="text"
                                     value={answer}
                                     onChange={(e) => setAnswer(e.target.value)}
                                   />
 
-                                    {/* button to input answer */}
+                                  {/* button to input answer */}
                                   <button
+                                  className="btn btn-success"
+                                  
                                     onClick={() => {
                                       let sectionToChangeAnswerTo =
                                         type.slice(index)[0];
@@ -120,20 +128,24 @@ function QuestionType() {
                     })}
                     <div>
                       {/* delete whole header and question type */}
-                      <button  className="question__Addbtn" onClick={() => deleteTypeHeader(index)}>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => deleteTypeHeader(index)}
+                      >
                         delete question type
                       </button>
 
                       <>
                         {/* Add questions to specific questionType */}
                         <input
+                        className="input-group"
                           type="text"
                           name="TypeQuestion"
                           value={typeQuestions}
                           onChange={(e) => setTypeQuestions(e.target.value)}
                         />
                         <button
-                          className="question__Addbtn"
+                          className="btn btn-success "
                           onClick={() => {
                             // Make sure question isn't empty
                             if (typeQuestions.length) {
@@ -163,7 +175,10 @@ function QuestionType() {
                   </>
                 ) : (
                   // Button that changes addIndex so that a specific header and questions would be open
-                  <button className="question__btn" onClick={() => setAddIndex(index)}>
+                  <button
+                    className="btn btn-info btn-lg"
+                    onClick={() => setAddIndex(index)}
+                  >
                     Open Questions
                   </button>
                 )}
@@ -176,6 +191,7 @@ function QuestionType() {
         <div>
           {/* Create new typeHeader */}
           <input
+          className="input-group"
             type="text"
             name="typeHeader"
             value={typeHeader}
@@ -183,7 +199,7 @@ function QuestionType() {
           />
           {/* Creates new QuestionType/Header for new questions to be underneath */}
           <button
-            className="question__Addbtn"
+            className="btn btn-success "
             onClick={() => {
               // make sure typeHeader isn't empty
               if (typeHeader.length) {

@@ -1,7 +1,13 @@
+.app {
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+}
+
 .sidebar {
     height: 100vh;
     width: 15vw;
-    background-color: #353b48;
+    background-color: gray;
 
     display: flex;
     

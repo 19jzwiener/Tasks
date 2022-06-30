@@ -8,8 +8,11 @@
 
 # Languages and Libraries Used
 - JavaScript
+  -    React
+  -    Router
 - HTML
 - CSS
+-   BootStrap
 
 # Live Demo Link
 

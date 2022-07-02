@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Tasks/static/css/main.f0bfe567.css",
+    "main.js": "/Tasks/static/js/main.1804a4f8.js",
+    "static/media/ColdMountain.jpg": "/Tasks/static/media/ColdMountain.e979e710832706195a4e.jpg",
+    "static/media/WarmMountain.jpg": "/Tasks/static/media/WarmMountain.6f12dae93f7f034aef0a.jpg",
+    "index.html": "/Tasks/index.html",
+    "main.f0bfe567.css.map": "/Tasks/static/css/main.f0bfe567.css.map",
+    "main.1804a4f8.js.map": "/Tasks/static/js/main.1804a4f8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f0bfe567.css",
+    "static/js/main.1804a4f8.js"
+  ]
+}

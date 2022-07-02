@@ -1,77 +1,41 @@
 .homeWorkout {
-    height: 80vh;
-    min-height: 60vh;
-    width: 70vw;
-    min-width: 3000px;
-    display: flex;
-    justify-content: flex-start;
     background-color: #191919;
     position: fixed;
-    left: 15vw;
-    bottom: 10vh;
-    margin: 0;
+    left: 20vw;
+    top: 10vh;
 
-    
 }
 
 .homeWorkout__header {
-    display: flex;
-    width: 68vw;
     align-items: center;
     justify-content: center;
-    left: 0vw;
-    top: 0vh;
-    background-color: grey;
-}
-
-.homeWorkout__headerLeft {
-    height: 30px;
-    width: 10vw;
-    border: ridge;
-}
-
-.homeWorkout__headerRight {
-    height: 30px;
-    width: 59vw;
-    border: ridge;
-
-}
-
-table {
-    border-spacing: 0;
-}
-
-.homeWorkout__row {
-    width: 80vw;
-    height: 9.5vh;
-    display: flex;
-    align-items: center;
-}
-
-
-
-.homeWorkout__btn {
-    width: 10vw;
-    display: flex;
-    align-items: center;
-
-    background-color: transparent;
-    border: none;
-    font-size: large;
+    background-color: black;
     color: white;
-    justify-content: center;
+    font-size: large;
 }
+
 
 .homeWorkout__subDel {
-    width: 10vw;
-    height: 8;
     display: flex;
     flex-direction: column;
     align-items: center;
+  
+}
 
+.text {
+    text-align: center;
+}
 
+.space {
+    justify-content: space-between;
+}
 
-    
+.test {
+    background-color: red;
+}
+
+.height {
+    height: 8vh;
 }
 
 
@@ -79,9 +43,6 @@ table {
 .homeWorkout__cellHeader {
     background-color: white;
     color: black;
-    height: 8vh;
-    width: 10vw;
-    padding: 2px;
     text-align: center;
     vertical-align: middle;
     border: groove;
@@ -91,11 +52,7 @@ table {
 .homeWorkout__cell {
     background: black;
     color: white;
-    height: 8vh;
-    width: 5.3vw;
-    padding: 3px;
     text-align: center;
-    vertical-align: middle;
     border: groove;
     border-radius: 15px;
 }

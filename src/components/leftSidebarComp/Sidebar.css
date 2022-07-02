@@ -27,6 +27,7 @@
     align-items: center;
     color: white;
     padding: 10px;
+    justify-content: space-between;
 }
 
 .sidebar__section {
@@ -36,16 +37,6 @@
     display: flex;
     flex-direction: column;
 }
-
-.sidebar__btn {
-
-    padding: 5px;
-
-    background-color: rgb(51, 51, 51);
-
-}
-
-
 
 
 

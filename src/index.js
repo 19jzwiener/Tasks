@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+
 import App from './App';
 import Questions from './components/QuestionsPage/Sidebar'
 
@@ -11,7 +12,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
         <Routes>
             <Route path="/" element={<App />} />
             <Route path="/Questions" element={<Questions />} />

@@ -37,6 +37,15 @@ function Workout() {
     setWorkoutRows([...workoutRows.slice(0, i), ...workoutRows.slice(i + 1)]);
   }
 
+  function deleteWorkoutCell(i, j) {
+    console.log(JSON.parse(window.localStorage.getItem("WORKOUT_ROW_INFO"))[i]);
+
+    let modifiedWorkoutRow = workoutRows[i];
+    modifiedWorkoutRow.workouts = [...modifiedWorkoutRow.workouts.slice(0, j),...modifiedWorkoutRow.workouts.slice(j + 1)]
+
+    setWorkoutRows([...workoutRows.slice(0, i), modifiedWorkoutRow,...workoutRows.slice(i + 1)]);
+  }
+
   return (
     <div className="container">
       {/* table for workout */}
@@ -57,11 +66,15 @@ function Workout() {
 
             {/* Creating new array under row.workouts */}
             {/* Iterating over row.workouts array --> created below!! */}
-            {row.workouts.map((workout, index) => {
+            <div className="col container">
+              <div className="row">
+            {row.workouts.map((workout, index2) => {
               return (
-                <div className=" homeWorkout__cell col">{workout}</div>
+                <div className=" homeWorkout__cell col" onClick={() => deleteWorkoutCell(index, index2)}>{workout}</div>
               );
-            })}
+            }) }
+            </div>
+            </ div>
 
             <div className="homeWorkout__subDel height col-1">
               {/* delete whole workoutRow index */}

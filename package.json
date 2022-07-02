@@ -1,8 +1,8 @@
 {
   "name": "p1",
-  "homepage": "https://19jzwiener.github.io/Tasks",
+  "homepage": "https://19jzwiener.github.io/Tasks/",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.1",

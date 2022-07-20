@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 
 
 import App from './App';
-import Questions from './components/QuestionsPage/Sidebar'
+import QuestionType from './components/leftSidebarComp/QuestionType';
 import Task from './components/leftSidebarComp/Task';
 import Weather from './components/leftSidebarComp/Weather';
 import Workout from './components/leftSidebarComp/Workout';
@@ -18,7 +18,7 @@ root.render(
     <Router basename={process.env.PUBLIC_URL}>
         <Routes>
             <Route path="/" element={<Weather />} />
-            <Route path="/Questions" element={<Questions />} />
+            <Route path="/Questions" element={<QuestionType />} />
             <Route path="/Todo" element={<Task />} />
             <Route path="/Workout" element={<Workout />} />
         </Routes>

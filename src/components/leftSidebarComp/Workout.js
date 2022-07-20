@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
+import { Link } from "react-router-dom";
+
 import "./Workout.css";
 
 function Workout() {
@@ -47,8 +49,40 @@ function Workout() {
   }
 
   return (
-    <div className="container">
-      {/* table for workout */}
+
+
+
+    <div className="bg-dark bg-gradient full">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className="container-fluid">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link to="/" className="nav-link active">
+                  Weather
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/Workout" className="nav-link active">
+                  Workout
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/Todo" className="nav-link active">
+                  Todo
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/Questions" className="nav-link active">
+                  Questions
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+           {/* table for workout */}
       <div className="row homeWorkout__header">
         <div className="col-2 text">Type</div>
         <div className="col-8 text">Workouts</div>
@@ -59,8 +93,8 @@ function Workout() {
       {/* Iterating over the entire workoutRows array */}
       {workoutRows.map((row, index) => {
         return (
-          <div className="row">
-            <div className="homeWorkout__cellHeader col-2">
+          <div className="row ">
+            <div className="homeWorkout__cell col-2 bg-secondary">
               {row.descriptionHeader}
             </div>
 
@@ -70,13 +104,13 @@ function Workout() {
               <div className="row">
             {row.workouts.map((workout, index2) => {
               return (
-                <div className=" homeWorkout__cell col" onClick={() => deleteWorkoutCell(index, index2)}>{workout}</div>
+                <div className=" homeWorkout__cell col bg-secondary bg-gradient" onClick={() => deleteWorkoutCell(index, index2)}>{workout}</div>
               );
             }) }
             </div>
             </ div>
 
-            <div className="homeWorkout__subDel height col-1">
+            <div className="homeWorkout__subDel col-1">
               {/* delete whole workoutRow index */}
               <button
                 className="btn btn-danger"
@@ -85,7 +119,7 @@ function Workout() {
                 Delete Row
               </button>
             </div>
-            <div className="col-1 text height">
+            <div className="col-1 text">
               {/* change add workout box depending on what index has been clicked */}
               {index == addIndex ? (
                 <>
@@ -100,7 +134,7 @@ function Workout() {
 
                   {/* add workout based off of input  */}
                   <button
-                    className="btn btn-success height"
+                    className="btn btn-success"
                     onClick={() => {
                       // make sure new workout isn't empty
                       if (descriptionBox.length) {
@@ -132,13 +166,16 @@ function Workout() {
                 </button>
               )}
             </div>
+            <hr class="my-2" />
           </div>
         );
       })}
 
-      <div>
+
+      <div className="d-flex flex-row align-items-center">
         {/* Create new workoutRow and workout list underneath */}
         <input
+        className="form-control form-control-lg"
           type="text"
           name="description"
           value={descriptionHeader}
@@ -168,7 +205,21 @@ function Workout() {
           Enter Header Cell
         </button>
       </div>
+
     </div>
+
+
+
+
+
+
+
+
+
+
+    
+ 
+  
   );
 }
 

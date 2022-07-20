@@ -80,9 +80,8 @@ function Task(props) {
               <div class="d-flex flex-row align-items-center">
                 <input
                   type="text"
-                  class="form-control form-control-lg"
+                  className="form-control form-control-lg"
                   placeholder="Add new..."
-                  className="form-control input-lg"
                   name="description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}

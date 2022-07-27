@@ -77,7 +77,7 @@ function Workout() {
               <div className="row">
             {row.workouts.map((workout, index2) => {
               return (
-                <div className=" homeWorkout__cell col bg-secondary bg-gradient" onClick={() => deleteWorkoutCell(index, index2)}>{workout}</div>
+                <div className=" homeWorkout__cell col bg-dark bg-gradient" onClick={() => deleteWorkoutCell(index, index2)}>{workout}</div>
               );
             }) }
             </div>

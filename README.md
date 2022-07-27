@@ -15,7 +15,7 @@
   -    React Router v6.3.0
 - HTML
 - CSS
-- BootStrap5
+- BootStrap5 v5.2.0-beta1
 
 ### Live Demo Link
 - https://19jzwiener.github.io/Tasks/

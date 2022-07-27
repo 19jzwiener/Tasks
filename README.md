@@ -6,13 +6,13 @@
 
 ### Running App
 1. npm install
-2. Open Folder in terminal and the type "npm start"
+2. Open Folder in terminal and type "npm start"
 3. Open localhost:3000 or localhost:####
 
 ### Languages and Libraries Used
 - JavaScript
   -    React
-  -    Router
+  -    React Router v6.3.0
 - HTML
 - CSS
 - BootStrap5

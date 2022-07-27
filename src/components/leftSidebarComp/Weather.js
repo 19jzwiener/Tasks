@@ -19,7 +19,8 @@ function App() {
     // search on enter key press
     if (evt.key === "Enter") {
       // search api (api.base) for weather in location (query) and give metrics (api.key)
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+      // .replace(/\s+/g, '') replace whitespace with emptystrings --> got from stackoverflow called regex
+      fetch(`${api.base}weather?q=${query.replace(/\s+/g, '')},us&units=metric&APPID=${api.key}`)
         .then((res) => res.json())
         .then((result) => {
           // change page to show the weather in specified area
@@ -70,34 +71,7 @@ function App() {
   return (
 
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link to="/" className="nav-link active">
-                  Weather
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/Workout" className="nav-link active">
-                  Workout
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/Todo" className="nav-link active">
-                  Todo
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/Questions" className="nav-link active">
-                  Questions
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  
       <div class="col px-0">
           <div
             // change className depending on weather
@@ -115,7 +89,7 @@ function App() {
                 <input
                   type="text"
                   className="search__bar"
-                  placeholder="Search a City..."
+                  placeholder="Search a City or City, State combo..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   // run search function

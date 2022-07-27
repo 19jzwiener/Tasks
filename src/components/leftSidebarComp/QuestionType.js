@@ -24,7 +24,7 @@ function QuestionType() {
   const [addIndex, setAddIndex] = useState(0);
 
   // UseState for index2 --> null leaves it closed until someone opens up a question inside QuestionType
-  const [addIndex2, setAddIndex2] = useState(null);
+  const [addIndex2, setAddIndex2] = useState(0);
 
   // Saves all questions and questionTypes into localStorage
   useEffect(() => {
@@ -45,222 +45,137 @@ function QuestionType() {
   }
 
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link to="/" className="nav-link active">
-                  Weather
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/Workout" className="nav-link active">
-                  Workout
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/Todo" className="nav-link active">
-                  Todo
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/Questions" className="nav-link active">
-                  Questions
-                </Link>
-              </li>
-            </ul>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-auto bg-light sticky-top">
+          <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+            {type.map((questionType, index) => {
+              return (
+                <div className="d-block p-3 link-dark text-decoration-none ">
+                  <i
+                    class="bi-bootstrap fs-1 button"
+                    onClick={() => setAddIndex(index)}
+                  >
+                    {questionType.typeHeader}
+                  </i>
+                </div>
+              );
+            })}
+            <div>
+              {/* Create new typeHeader */}
+              <input
+                type="text"
+                name="typeHeader"
+                value={typeHeader}
+                onChange={(e) => setTypeHeader(e.target.value)}
+              />
+              {/* Creates new QuestionType/Header for new questions to be underneath */}
+              <button
+                className="btn btn-success "
+                onClick={() => {
+                  // make sure typeHeader isn't empty
+                  if (typeHeader.length) {
+                    // take current header list and add new header
+                    setType([
+                      ...type,
+                      {
+                        // typeHeader = typeHeader from useState
+                        typeHeader: typeHeader,
+                        // create new questions array
+                        questions: [],
+                        // Create new answers array
+                        answers: [],
+                      },
+                    ]);
+                    // reset typeHeader to blank
+                    setTypeHeader("");
+                  }
+                }}
+              >
+                Add Header
+              </button>
+            </div>
           </div>
         </div>
-      </nav>
 
+        <div class="col-sm p-3 min-vh-100">
+          {type[addIndex] &&
+            type[addIndex].questions.map((question, index2) => {
+              return (
+                <div>
+                  {/* Take questions stuff from other page */}
 
-      <div className="type">
-        <div>
-          {/* looping through each of the questionTypes */}
-          {type.map((questionType, index) => {
-            return (
-              <article>
-                <div >
-                  <div >
-                    <p >
-                      {/* Shows each header on the page */}
-                      {questionType.typeHeader}
-                    </p>
+                  <div>
+                    {index2 !== addIndex2 && (
+                      <>
+                        {/* Print out each question under the header */}
+                        <p>{question}</p>
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => setAddIndex2(index2)}
+                        >
+                          Open answer sheet
+                        </button>
+                        {/* LineBreak */}
+                        <hr class="my-2" />
+                      </>
+                    )}
                   </div>
 
-                  {/* hides questions under each header until addIndex is equal to set index */}
-                  {index == addIndex ? (
+                  {/* Pops out the answer page only if both index's equal the header and question index's */}
+                  {index2 == addIndex2 && (
                     <>
-                      {/* Loop through questions under a header */}
-                      {questionType.questions.map((question, index2) => {
-                        return (
-                          // Take questions stuff from other page
-                          <div >
-                            {/* Print out each question under the header */}
-                            <p >{question}</p>
+                      {/* popout box --> question/textarea/boxAnswer/changeAnswer */}
+
+                      <div className="">
+                        <p className="fs-3">{question}</p>
+                        <div>
+                          {/* area where answer will sit when inputted */}
+                          <p className="p-2 bg-light border fs-5">
+                            {type[addIndex].answers[index2]}
+                          </p>
+
+                          {/* area to input answers */}
+                          <div className="d-flex flex-row align-items-center">
+                            <input
+                              placeholder="Enter Answer"
+                              className="input-group"
+                              type="text"
+                              value={answer}
+                              onChange={(e) => setAnswer(e.target.value)}
+                            />
+
+                            {/* button to input answer */}
                             <button
-                              className="btn btn-primary"
-                              onClick={() => setAddIndex2(index2)}
-                            >
-                              Open answer sheet
-                            </button>
-                            
-
-                            {/* Pops out the answer page only if both index's equal the header and question index's */}
-                            {index == addIndex && index2 == addIndex2 && (
-                              <>
-                                {/* popout box --> question/textarea/boxAnswer/changeAnswer */}
-                                <div >
-                                  <p>{question}</p>
-                                  <div >
-                                    {/* area where answer will sit when inputted */}
-                                    <textarea
-                                      
-                                      type="text"
-                                      placeholder="Enter your answer..."
-                                      value={questionType.answers[index2]}
-                                      onChange={(e) => console.log(e)}
-                                    />
-                                    {/* area to input answers */}
-                                    <input
-                                      className="input-group"
-                                      type="text"
-                                      value={answer}
-                                      onChange={(e) =>
-                                        setAnswer(e.target.value)
-                                      }
-                                    />
-
-                                    {/* button to input answer */}
-                                    <button
-                                      className="btn btn-success"
-                                      onClick={() => {
-                                        let sectionToChangeAnswerTo =
-                                          type.slice(index)[0];
-                                        // push type info to typeQuestions
-                                        sectionToChangeAnswerTo.answers[
-                                          index2
-                                        ] = answer;
-
-                                        // Place new question at end of array
-                                        setType([
-                                          ...type.slice(0, index),
-                                          sectionToChangeAnswerTo,
-                                          ...type.slice(index + 1),
-                                        ]);
-                                        setAnswer("");
-                                      }}
-                                    >
-                                      Change Answer
-                                    </button>
-                                  </div>
-                                </div>
-                              </>
-                            )}
-                          </div>
-                        );
-                      })}
-                      <div>
-                        {/* delete whole header and question type */}
-                        <button
-                          className="btn btn-danger"
-                          onClick={() => deleteTypeHeader(index)}
-                        >
-                          delete question type
-                        </button>
-
-                        <>
-                          {/* Add questions to specific questionType */}
-                          <input
-                            
-                            type="text"
-                            name="TypeQuestion"
-                            value={typeQuestions}
-                            onChange={(e) => setTypeQuestions(e.target.value)}
-                          />
-                          <button
-                            className="btn btn-success "
-                            onClick={() => {
-                              // Make sure question isn't empty
-                              if (typeQuestions.length) {
-                                let sectionToAddQuestionTo =
-                                  type.slice(index)[0];
+                              className="btn btn-success"
+                              onClick={() => {
+                                let sectionToChangeAnswerTo =
+                                  type.slice(addIndex)[0];
                                 // push type info to typeQuestions
-                                sectionToAddQuestionTo.questions.push(
-                                  typeQuestions
-                                );
-
-                                sectionToAddQuestionTo.answers.push("");
+                                sectionToChangeAnswerTo.answers[index2] =
+                                  answer;
 
                                 // Place new question at end of array
                                 setType([
-                                  ...type.slice(0, index),
-                                  sectionToAddQuestionTo,
-                                  ...type.slice(index + 1),
+                                  ...type.slice(0, addIndex),
+                                  sectionToChangeAnswerTo,
+                                  ...type.slice(addIndex + 1),
                                 ]);
-                                // reset description to blank
-                                setTypeQuestions("");
-                              }
-                            }}
-                          >
-                            Add Question
-                          </button>
-                        </>
+                                setAnswer("");
+                              }}
+                            >
+                              Change
+                            </button>
+                          </div>
+                          {/* LineBreak */}
+                          <hr class="my-2" />
+                        </div>
                       </div>
                     </>
-                  ) : (
-                    // Button that changes addIndex so that a specific header and questions would be open
-                    <button
-                      className="btn btn-info btn-lg"
-                      onClick={() => setAddIndex(index)}
-                    >
-                      Open Questions
-                    </button>
                   )}
                 </div>
-
-
-              </article>
-            );
-          })}
-
-          <div>
-            {/* Create new typeHeader */}
-            <input
-              
-              type="text"
-              name="typeHeader"
-              value={typeHeader}
-              onChange={(e) => setTypeHeader(e.target.value)}
-            />
-            {/* Creates new QuestionType/Header for new questions to be underneath */}
-            <button
-              className="btn btn-success "
-              onClick={() => {
-                // make sure typeHeader isn't empty
-                if (typeHeader.length) {
-                  // take current header list and add new header
-                  setType([
-                    ...type,
-                    {
-                      // typeHeader = typeHeader from useState
-                      typeHeader: typeHeader,
-                      // create new questions array
-                      questions: [],
-                      // Create new answers array
-                      answers: [],
-                    },
-                  ]);
-                  // reset typeHeader to blank
-                  setTypeHeader("");
-                }
-              }}
-            >
-              Add Header
-            </button>
-          </div>
+              );
+            })}
         </div>
       </div>
     </div>

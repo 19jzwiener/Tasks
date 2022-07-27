@@ -94,6 +94,9 @@ function QuestionType() {
               >
                 Add Header
               </button>
+              {/* LineBreak */}
+              <hr class="my-2" />
+              <p>Type in header to start asking questions</p>
             </div>
           </div>
         </div>
@@ -116,8 +119,6 @@ function QuestionType() {
                         >
                           Open answer sheet
                         </button>
-                        {/* LineBreak */}
-                        <hr class="my-2" />
                       </>
                     )}
                   </div>

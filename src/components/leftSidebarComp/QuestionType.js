@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 
 import "./QuestionType.css";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
 function QuestionType() {
   // List of all types of questions
   const [type, setType] = useState([]);
@@ -44,6 +41,13 @@ function QuestionType() {
     setType([...type.slice(0, i), ...type.slice(i + 1)]);
   }
 
+  // delete QuestionType
+  function deleteWorkoutRow(i) {
+    console.log(JSON.parse(window.localStorage.getItem("TYPE_INFO"))[i]);
+
+    setType([...type.slice(0, i), ...type.slice(i + 1)]);
+  }
+
   return (
     <div class="container-fluid">
       <div class="row">
@@ -51,13 +55,66 @@ function QuestionType() {
           <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
             {type.map((questionType, index) => {
               return (
-                <div className="d-block p-3 link-dark text-decoration-none ">
+                <div className="d-block p-3 link-dark text-decoration-none  ">
                   <i
                     class="bi-bootstrap fs-1 button"
                     onClick={() => setAddIndex(index)}
                   >
                     {questionType.typeHeader}
                   </i>
+                  <div className="d-flex justify-content-evenly ">
+                    {/* delete whole questionType index */}
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => deleteWorkoutRow(index)}
+                    >
+                      Delete
+                    </button>
+                  
+                  {index == addIndex ? (
+                    <div className="d-flex justify-content-evenly">
+                    {/* Add questions to specific questionType */}
+                    <input
+                      className="input-group"
+                      type="text"
+                      name="TypeQuestion"
+                      value={typeQuestions}
+                      onChange={(e) => setTypeQuestions(e.target.value)}
+                    />
+                    <button
+                      className="btn btn-success "
+                      onClick={() => {
+                        // Make sure question isn't empty
+                        if (typeQuestions.length) {
+                          let sectionToAddQuestionTo = type.slice(index)[0];
+                          // push type info to typeQuestions
+                          sectionToAddQuestionTo.questions.push(typeQuestions);
+
+                          sectionToAddQuestionTo.answers.push("");
+
+                          // Place new question at end of array
+                          setType([
+                            ...type.slice(0, index),
+                            sectionToAddQuestionTo,
+                            ...type.slice(index + 1),
+                          ]);
+                          // reset description to blank
+                          setTypeQuestions("");
+                        }
+                      }}
+                    >
+                      Add
+                    </button>
+                  </div>
+                  ) : (
+                    <button
+                  className="btn btn-info d-flex justify-content-evenly"
+                  onClick={() => setAddIndex(index)}
+                >
+                  Add Question
+                </button>
+                  )}
+                  </div>
                 </div>
               );
             })}
@@ -94,6 +151,7 @@ function QuestionType() {
               >
                 Add Header
               </button>
+
               {/* LineBreak */}
               <hr class="my-2" />
               <p>Type in header to start asking questions</p>
